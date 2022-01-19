@@ -8,7 +8,7 @@ function create_table() {
 	$charset_collate = $wpdb->get_charset_collate();
 
 	$sql = "CREATE TABLE {$test} (
-		id varchar(255) unsigned NOT NULL auto_increment,
+		id varchar(255) NOT NULL,
 		link varchar(255) NOT NULL default'',
 		PRIMARY KEY (id),
 		KEY link (link)
