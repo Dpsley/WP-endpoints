@@ -11,3 +11,15 @@ add_action( 'rest_api_init', function() {
 	) );
 
 } );
+function function_name( WP_REST_Request $request ){
+
+	$request = get_param( [
+		'link' => (string) $request['link'],
+	] );
+
+	if ( empty( $request ) ) {
+		return new WP_Error('Неизвестная ссылка', [ 'status' => 404 ] );
+	}
+
+	return $request;
+}
