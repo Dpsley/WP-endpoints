@@ -5,7 +5,7 @@ add_action( 'rest_api_init', function() {
 		'callback'            => 'function_name', 
 		'args' => array(
 			'link' => array(
-				'required'          => null,    
+				'required'          => true,    
 			),
 		),
 	) );
