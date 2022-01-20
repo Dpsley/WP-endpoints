@@ -68,7 +68,6 @@ function read_tables(){
 		global $generated;
 	 $generated = idfortable(8);
 		$fivesdrafts = $wpdb->get_var( "SELECT id FROM plg_redirect WHERE id = '{$generated}'");
-		//var_dump ($generated);
 		var_dump ($fivesdrafts);
 		return $generated;
 	}
