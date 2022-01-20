@@ -91,6 +91,6 @@ $wpdb->query($sql);
 	//$test = $wpdb->insert( 'plg_redirect', ['id' =>  $generated , 'link' => $link ]);
 	//var_dump($link);
 }
-insertlink();
+insertlink();//вызов функции записи в бд
 }
 ?>
