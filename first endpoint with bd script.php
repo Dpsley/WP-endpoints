@@ -78,8 +78,6 @@ var_dump($link);
 
 
 	//заносим в БД
-//$id = read_tables($generated);
-//var_dump($id);
 function insertlink(){
 	global $wpdb;
     global $generated;
@@ -87,9 +85,6 @@ function insertlink(){
 var_dump($generated);
 $sql = $wpdb->prepare("INSERT INTO plg_redirect (id,link) values ('$generated', '$link')");
 $wpdb->query($sql);
-
-	//$test = $wpdb->insert( 'plg_redirect', ['id' =>  $generated , 'link' => $link ]);
-	//var_dump($link);
 }
 insertlink();//вызов функции записи в бд
 }
