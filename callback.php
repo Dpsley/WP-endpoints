@@ -1,10 +1,10 @@
 <?
 function redirect_add_link( WP_REST_Request $request ){//тут обработчик
+}
 
-	$link = $request->get_param('link');
-	do {
+	//$link = $request->get_param('link');
 	$a=8;	//генерируем id
-	function getid($a) {
+	function idfortable($a = null) {
 		   $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		   $randomString = '';
 
@@ -15,13 +15,18 @@ function redirect_add_link( WP_REST_Request $request ){//тут обработч
 		   return $randomString;
 	}
 
+idfortable();
 	//проверим в БД существование, регенерируем id при необходимости
-	$query = "SELECT id FROM plg_redirect WHERE id = $randomString"
-	}while ($query!=null);
-	//заносим в БД
-
-	return [];
+	function read_tables(){
+		global $wpdb;
+		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+$fivesdrafts = $wpdb->get_var( "SELECT id FROM plg_redirect WHERE id = '.idfortable($a).'");// подставил вместо статического id тот который сформирован генератором и если совпадений нет то выводит null 
+var_dump ($fivesdrafts);
 }
+read_tables();
+var_dump (idfortable($a));
+	// я вывожу результат запроса и генерации нового id 
 
+//заносим в БД
 
 ?>
