@@ -63,20 +63,26 @@ function redirect_add_link( WP_REST_Request $request ){//тут обработч
 	$a=8;	//генерируем id
 
 	//проверим в БД существование, регенерируем id при необходимости
-function read_tables(){
+do {
+	function read_tables(){
 		global $wpdb;
 		global $generated;
 	 $generated = idfortable(8);
 		$fivesdrafts = $wpdb->get_var( "SELECT id FROM plg_redirect WHERE id = '{$generated}'");
+
+		//var_dump ($generated);
 		var_dump ($fivesdrafts);
 		return $generated;
 	}
+}while($fivesdrafts=null);
 read_tables();
 var_dump($link);
 
 
 
 	//заносим в БД
+//$id = read_tables($generated);
+//var_dump($id);
 function insertlink(){
 	global $wpdb;
     global $generated;
@@ -84,7 +90,11 @@ function insertlink(){
 var_dump($generated);
 $sql = $wpdb->prepare("INSERT INTO plg_redirect (id,link) values ('$generated', '$link')");
 $wpdb->query($sql);
+
+	//$test = $wpdb->insert( 'plg_redirect', ['id' =>  $generated , 'link' => $link ]);
+	//var_dump($link);
 }
-insertlink();//вызов функции записи в бд
+insertlink();
 }
+
 ?>
