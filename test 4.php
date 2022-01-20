@@ -5,9 +5,10 @@ add_action( 'rest_api_init', function() {
 		'methods'             => 'POST',
 		'callback'            => 'qwe', //имя функции обработчика
 		'args' => [
-			'link' => 'string',
+			'link' => ['type' =>'string',
 			'required' => true,
 			],
+		]
 ));
 });
 ?>
