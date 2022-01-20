@@ -4,17 +4,18 @@ function create_table() {
 
 	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
-	$table_name = $wpdb->get_blog_prefix() . 'test_table';
+	$table_name = $wpdb->get_blog_prefix() . 'test';
 	$charset_collate = $wpdb->get_charset_collate();
 
-	$sql = "CREATE TABLE {$test} (
-		id varchar(255) NOT NULL,
-		link varchar(255) NOT NULL default'',
-		PRIMARY KEY (id),
-		KEY link (link)
-	    )
+	$sql = "CREATE TABLE {$table_name} (
+	id  varchar(20) NOT NULL,
+	address varchar(255) NOT NULL default '',
+	PRIMARY KEY  (id),
+	)
 	{$charset_collate};";
 
 	dbDelta($sql);
 }
+
+create_table();
 ?>
