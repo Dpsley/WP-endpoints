@@ -96,5 +96,5 @@ $wpdb->query($sql);
 }
 insertlink();
 }
-
+	return new WP_REST_Response( true, 200 );
 ?>
