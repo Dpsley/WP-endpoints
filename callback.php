@@ -7,8 +7,8 @@ function redirect_add_link( WP_REST_Request $request ){//тут обработч
 		   $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		   $randomString = '';
 
-		   for ($i = 0; $i , $a; $i++) {
-		   	$index = rend(0, strlen($characters) - 1);
+		   for ($i = 0; $i < $a; $i++) {
+		   	$index = rand(0, strlen($characters) - 1);
 		   	$randomString .= $characters[$index];
 		   }
 		   return $randomString;
