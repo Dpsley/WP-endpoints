@@ -1,3 +1,4 @@
+<?
 function create_table() {
 	global $wpdb;
 
@@ -81,3 +82,4 @@ function id_get_link( WP_REST_Request $requestq ){
 
 	return new WP_REST_Response( true, 200 );
 }
+?>
