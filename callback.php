@@ -19,7 +19,6 @@ idfortable();
 	//проверим в БД существование, регенерируем id при необходимости
 	function read_tables(){
 		global $wpdb;
-		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 $fivesdrafts = $wpdb->get_var( "SELECT id FROM plg_redirect WHERE id = '.idfortable($a).'");// подставил вместо статического id тот который сформирован генератором и если совпадений нет то выводит null 
 var_dump ($fivesdrafts);
 }
