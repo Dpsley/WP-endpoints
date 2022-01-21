@@ -68,7 +68,7 @@ $mytable = $wpdb->get_results( "SELECT id, link FROM plg_redirect", ARRAY_A );
 	var_dump($mytable);
 	$array = json_encode($mytable); //кодирование в джейсона
 	var_dump($array);
-	$response = wp_remote_get('http://test/wp-json/iq/v1/redirect_list/');
+	$response = wp_remote_get('http://test/wp-json/iq/v1/redirect_list');
     $code = wp_remote_retrieve_response_code( $response ); 
 // Получаю код ответа
 echo $code; //> 200
