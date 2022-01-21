@@ -26,13 +26,25 @@ add_action( 'rest_api_init', function() {
 		'args' => [
 			'link' => ['type' =>'string',
 			'required' => true,
+			'status' => 200,
 			],
 		]
 ));
 	register_rest_route( 'iq/v1', 'redirect_list', array(
 		'methods'             => 'POST',
 		'callback'            => 'redirect_list_show', //имя функции обработчика
-		'args' => []
+		'args' => [
+		    'link' => ['type' =>'string',
+		    'required' => true,
+		    'status' => 200,
+	        ],
+
+	        'id' => ['type' => 'string',
+            'required' => true,
+		    'status' => 200,
+	        ],
+
+]
 ));
 	register_rest_route( 'iq/v1', 'redirect_delete', array(
 		'methods'             => 'POST',
@@ -58,6 +70,7 @@ function idfortable($a = null) {
 idfortable();
 function redirect_add_link( WP_REST_Request $request ){//тут обработчик
 
+
          global $link;
 	 	 $link = $request->get_param('link');
 	$a=8;	//генерируем id
@@ -74,15 +87,15 @@ do {
 		var_dump ($fivesdrafts);
 		return $generated;
 	}
-}while($fivesdrafts=null);
+
+
 read_tables();
 var_dump($link);
 
 
 
 	//заносим в БД
-//$id = read_tables($generated);
-//var_dump($id);
+
 function insertlink(){
 	global $wpdb;
     global $generated;
@@ -91,10 +104,12 @@ var_dump($generated);
 $sql = $wpdb->prepare("INSERT INTO plg_redirect (id,link) values ('$generated', '$link')");
 $wpdb->query($sql);
 
-	//$test = $wpdb->insert( 'plg_redirect', ['id' =>  $generated , 'link' => $link ]);
-	//var_dump($link);
 }
+}while($fivesdrafts=null);
 insertlink();
+	$response = wp_remote_get('http://test/wp-json/iq/v1/redirect_add');
+    $code = wp_remote_retrieve_response_code( $response );
+
+echo $code; //> 200
 }
-	return new WP_REST_Response( true, 200 );
 ?>
