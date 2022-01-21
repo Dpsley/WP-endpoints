@@ -41,6 +41,7 @@ add_action( 'rest_api_init', function() {
 		'args' => [
 			'id' => ['type' =>'string',
 			'required' => true,
+			'status' => 200,
 			],
 		]
 ));
