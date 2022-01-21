@@ -46,7 +46,15 @@ add_action( 'rest_api_init', function() {
 		]
 ));
 });
-function idfortable($a = null) {
+function redirect_add_link( WP_REST_Request $request ){//тут обработчик
+
+		global $wpdb;
+
+
+
+
+	       $a=8;
+function idfortable($a = null) { //генерируем id
 		   $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		   $randomString = '';
 
@@ -55,51 +63,20 @@ function idfortable($a = null) {
 		   	$randomString .= $characters[$index];
 		   }
 		   return $randomString;
-	}
 
-idfortable();
-function redirect_add_link( WP_REST_Request $request ){//тут обработчик
-
-
-         global $link;
-	 	 $link = $request->get_param('link');
-	$a=8;	//генерируем id
-
-	//проверим в БД существование, регенерируем id при необходимости
-do {
-	function read_tables(){
-		global $wpdb;
-		global $generated;
-	 $generated = idfortable(8);
+	//проверим в БД существование id
+	 $generated = $randomString;
 		$fivesdrafts = $wpdb->get_var( "SELECT id FROM plg_redirect WHERE id = '{$generated}'");
-
-		//var_dump ($generated);
-		var_dump ($fivesdrafts);
 		return $generated;
 	}
-
-
-read_tables();
-var_dump($link);
-
-
-
-	//заносим в БД
-
-function insertlink(){
-	global $wpdb;
-    global $generated;
-    global $link;
-var_dump($generated);
-$sql = $wpdb->prepare("INSERT INTO plg_redirect (id,link) values ('$generated', '$link')");
-$wpdb->query($sql);
+		 	 $link = $request->get_param('link');
+$gener = idfortable(8);
+              $sql = $wpdb->prepare("INSERT INTO plg_redirect (id,link) values ('$gener', '$link')");	//заносим в БД
+              $wpdb->query($sql);
+              var_dump($link);
+return $gener;
 
 }
-}while($fivesdrafts=null);
-insertlink();
-	$response = wp_remote_get('http://test/wp-json/iq/v1/redirect_add');
-    $code = wp_remote_retrieve_response_code( $response );
 
-echo $code; //> 200
-}
+
 ?>
