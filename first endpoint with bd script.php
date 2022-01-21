@@ -56,7 +56,8 @@ function redirect_add_link( WP_REST_Request $request ){//тут обработч
 	       $a=8;
 function idfortable($a = null) { //генерируем id
 		   $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-		   $randomString = '';
+		   do{
+		   	$randomString = '';
 
 		   for ($i = 0; $i < $a; $i++) {
 		   	$index = rand(0, strlen($characters) - 1);
@@ -67,14 +68,14 @@ function idfortable($a = null) { //генерируем id
 	//проверим в БД существование id
 	 $generated = $randomString;
 		$fivesdrafts = $wpdb->get_var( "SELECT id FROM plg_redirect WHERE id = '{$generated}'");
+}while ($fivesdrafts=null);
 		return $generated;
 	}
 		 	 $link = $request->get_param('link');
 $gener = idfortable(8);
               $sql = $wpdb->prepare("INSERT INTO plg_redirect (id,link) values ('$gener', '$link')");	//заносим в БД
               $wpdb->query($sql);
-              var_dump($link);
-return $gener;
+return [$gener,$link];
 
 }
 
