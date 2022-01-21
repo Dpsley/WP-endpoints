@@ -33,18 +33,7 @@ add_action( 'rest_api_init', function() {
 	register_rest_route( 'iq/v1', 'redirect_list', array(
 		'methods'             => 'POST',
 		'callback'            => 'redirect_list_show', //имя функции обработчика
-		'args' => [
-		    'link' => ['type' =>'string',
-		    'required' => true,
-		    'status' => 200,
-	        ],
-
-	        'id' => ['type' => 'string',
-            'required' => true,
-		    'status' => 200,
-	        ],
-
-]
+		'args' => []
 ));
 	register_rest_route( 'iq/v1', 'redirect_delete', array(
 		'methods'             => 'POST',
