@@ -1,4 +1,4 @@
 # test
-test.php - создание таблицы<br>
-test 4.php - регистрация роутов<br>
-first endpoint with bd script.php - 1 рабочий эндпоинт из 3
+test.php - creating a table
+test 4.php - registration of reutov
+first endpoint with bd script.php - 1 working endpoint out of 3
